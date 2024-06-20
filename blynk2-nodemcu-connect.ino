@@ -10,8 +10,8 @@
 #include <WiFiUdp.h>
 #include <Servo.h>
 
-const char *ssid = "BEH_EXT";
-const char *password = "78397839";
+const char *ssid = "*******";
+const char *password = "*******";
 
 const long utcOffsetInSeconds = 28800;
 WiFiUDP ntpUDP;
