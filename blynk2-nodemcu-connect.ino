@@ -22,8 +22,10 @@ Servo servo_1;
 
 // Define feeding times in seconds since midnight
 const int FEEDING_TIME_MORNING = 8 * 3600;            // 8 AM
+const int FEEDING_TIME_AFTERNOON = 13 * 3600;          // 1 PM
 const int FEEDING_TIME_EVENING = 18 * 3600;           // 6 PM
 bool fedMorning = false;
+bool fedAfternoon = false;
 bool fedEvening = false;
 
 int singleFeed = 0; // State of the single feed button
@@ -117,6 +119,13 @@ void loop() {
       fedMorning = true;
     }
 
+    // Check if it's feeding time in the afternoon
+    if (currentSeconds >= FEEDING_TIME_AFTERNOON && currentSeconds < (FEEDING_TIME_AFTERNOON + 60) && !fedAfternoon) {
+      Serial.println("Feeding in the afternoon...");
+      feedPet();
+      fedAfternoon = true;
+    }
+
     // Check if it's feeding time in the evening
     if (currentSeconds >= FEEDING_TIME_EVENING && currentSeconds < (FEEDING_TIME_EVENING + 60) && !fedEvening) {
       Serial.println("Feeding in the evening...");
@@ -127,6 +136,7 @@ void loop() {
     // Reset the flags at midnight
     if (currentHour == 0 && currentMinute == 0 && currentSecond == 0) {
       fedMorning = false;
+      fedAfternoon = false;
       fedEvening = false;
     }
   }
