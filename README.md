@@ -2,10 +2,6 @@
 
 This project is an automated pet feeder controlled via Blynk and an ESP8266 microcontroller. The feeder can dispense food at scheduled times or manually via a button in the Blynk app.
 
-## Project Details
-
-To learn more about the project, including setup instructions and component details, please visit the [project website](https://sites.google.com/student.monash.edu/iot-pet-feeder/home).
-
 ## Features
 
 - Schedule feeding times: Set up specific times for automatic feeding to ensure your pet gets regular meals.
